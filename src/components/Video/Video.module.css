@@ -1,0 +1,20 @@
+.videoContainer {
+  --tamano-maximo-tela: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(var(--tamano-maximo-tela) - 350px);
+  height: 100vh;
+  background-color: rgb(175, 175, 175);
+  padding: 50px; 
+}
+
+.videoModule {
+  font-size: 48px;
+  margin: 20px;
+}
+
+.videoLesson {
+  font-size: 36px;
+}
