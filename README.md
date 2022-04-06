@@ -3,11 +3,13 @@
 Este projeto exemplifica um menu lateral compartilhando informações com um componente chamado video através da ferramenta de arquitetura <strong>Redux</strong>.
 
 <br>
+
 ### O que iremos utilizar neste projeto?
 
 Partindo do pré suposto que você já tenha feito alguns projetos em React, mas caso não seja familiarizado é necessário ter o Node e NPM instalados em sua máquina e também um editor de sua preferência, no meu caso utilizo o VSCode.
 
 <br>
+
 #### Tecnologias que iremos utilizar:
 
 - React v18.0.0 `npx create-react-app meu-projeto`
@@ -15,6 +17,7 @@ Partindo do pré suposto que você já tenha feito alguns projetos em React, mas
 - React Redux `yarn add react-redux`
 
 <br>
+
 ### Para que serve o Redux?
 
 O Redux é um processo arquitetural de projeto, onde ele irá ficar responsável por manter todas as informações que serão necessário o compartilhamento delas, ele também lida com ações/efeitos colaterais (side effects).
@@ -22,11 +25,13 @@ No nosso exemplo, teremos um "player" de video e um menu lateral que irão compa
 Dependendo da situação, você pode optar por não utilizar o Redux, passando props ou outra forma, mas além de não ficar fácil a manutenção e escalabilidade do projeto, pode criar alguns gargalos de renderização, tirando o fato que com Redux conseguimos criar ações para determinados eventos.
 
 <br>
+
 ### Mão na massa!
 
 Não irei mostrar todo o código aqui, caso queira olhar mais detalahadamente basta ir no arquivo dentro do projeto.
 
 <br>
+
 #### Primeiro a estrutura de pastas
 
 Este passo é importante, pode ser que a empresa que trabalhe utilize uma outra forma, o importante é ficar claro para você.
@@ -49,6 +54,7 @@ Geralmente temos a seguinte estrutura de pasta:
 Então dentro da pasta src teremos uma pasta 'store' onde iremos definir os dados compartilhados e ações.
 
 <br>
+
 #### Vamos começar pela pasta 'reducers'.
 
 - Nela será onde iremos definir n funções que irão se chamar de reducers e que retornam os dados que queremos compartilhar.  Estas funções serão basicamente assim:
@@ -79,6 +85,7 @@ export default combineReducers({
 ```
 
 <br>
+
 #### Vamos para as actions.
 
 - Esta pasta irá conter nossas ações, como o nome propriamente diz, as actions serão funções que retornam um objeto ou um simples objeto passado diretamente para a função 'dispatch' que o próprio Redux disponibiliza para manipularmos as informações.
@@ -86,6 +93,7 @@ export default combineReducers({
 - Este objeto irá conter um atributo 'type' onde irá ter descrito a ação para a função reducer, geralmente é escrito em caixa alta, como no exemplo acima 'NOME_DE_UMA_AÇÃO' e os valores que quer manipular.
 
 <br>
+
 #### Arquivo index.js dentro da Store
 
 Neste arquivo é onde criaremos a árvore de estados do Redux, utilizando a função 'createStore', importaremos os nossos reducers combinados do arquivo 'reducers/index.js' e passaremos para a função 'createStore' como parâmetro e atribuindo essa função 'createStore' para uma constante chamada 'store' que iremos exportar ela, conforme exemplo abaixo:
@@ -101,6 +109,7 @@ export default store;
 
 
 <br>
+
 #### Ainda tem mais configuração!
 
 Depois que criamos nossos reducers e actions, iremos englobar os componentes que iremos compartilhar estes dados.
@@ -125,6 +134,7 @@ export default App;
 ```
 
 <br>
+
 #### Quase lá!
 
 Agora para conseguirmos recupar os dados e/ou mandar uma action para nosso reducer temos que utilizar uma função chamada 'connect' do react-redux e ela trabalha com High Order Components, que é uma forma de trabalhar com funções um pouco diferente.
@@ -162,6 +172,7 @@ export default connect(state => state)(NomeDoComponente);
 ```
 
 <br>
+
 ### Conclusão
 
 O Redux nós ajuda a descomplicar essa manipulação de dados dentro dos componentes e cria determinada ações para nos ajudar a manipula-lós.
