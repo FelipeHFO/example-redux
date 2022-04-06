@@ -177,3 +177,36 @@ export default connect(state => state)(NomeDoComponente);
 
 O Redux nós ajuda a descomplicar essa manipulação de dados dentro dos componentes e cria determinada ações para nos ajudar a manipula-lós.
 Acredito que se você seguir essa documentação e abrir o projeto irá ficar bem mais claro para entender.
+
+
+<br>
+
+### Bônus
+
+Foram lançados alguns Hooks para tornar o código menos verboso. Agora ao invés
+de utilizarmos a função 'connect' do react-redux, podemos utilizar os Hooks
+'useSelector' e 'useDispatch' quando necessário.
+<br>
+Não precisamos mais utilizar a forma de High Order Component na exportação dos
+componentes e nem mesmo declarar nas props do componente os estados e funções
+compartilhados pelo redux.
+<br>
+Veja no exemplo do nosso componente Sidebar, como ficou muito mais fácil e limpo
+de se trabalhar utilizando os Hooks.
+
+```
+import { useSelector, useDispatch } from 'react-redux';
+
+const Sidebar = () => {
+  const modules = useSelector(state => state.course.modules);
+  const dispatch = useDispatch();
+ 
+  return (
+    <aside>
+			...
+    </aside>
+  )
+};
+
+export default Sidebar;
+```
